@@ -1,46 +1,57 @@
 <?php
-
 session_start();
 
+// echo session_id()."<br>";
 
-    
+if (isset($_SESSION['page_count']))
+$_SESSION['page_count']+=1;
+else
+$_SESSION['page_count']=1;
 
-echo '<pre>';
-var_dump($_SESSION);
-echo '</pre>';
+echo "you visted " .$_SESSION['page_count']." times"."<br>";
 
-if (isset($_SESSION['page_count'])) {
-    $_SESSION['page_count'] += 1;
+if ($_SESSION['page_count']>5)
+echo "<p style='color:blue'>you are unique user</p>";
 
-} else {
-    $_SESSION['page_count'] = 1;
+$_SESSION['country']='egypt';
+$_SESSION['coin']='pound';
 
+// unset($_SESSION['country']);
+// session_destroy();
+// $id=$_SESSION['PHPSESSID'];
 
-}
-$_SESSION['country'] = 'Egypt';
+setcookie('PHPSESSID',"",time()-1000,'/');
+// unset($_SESSION['PHPSESSID']);
+session_regenerate_id();
+// unset($_SESSION['PHPSESSID']);
+// session_destroy();
 
-echo "you visited my web site " . $_SESSION['page_count']." times" . "<br>" ;
+session_regenerate_id();
+// session_destroy();
 
-if ($_SESSION['page_count'] >10 ){
+// session_destroy();
 
-    echo "thank you for visiting our website <span style='color:red'> 10 </span> times";
-
-}
-
-;
-unset($_SESSION['country']);
-
-setcookie('PHPESSID','',time()-1);
-session_regenerate_id() ;
 
 
 echo"<pre>";
 var_dump($_SESSION);
 echo"</pre>";
 
-setcookie('name','osama',time()+60);
+setcookie('name','Osama',time()+30);
+
+
+if (isset($_COOKIE['name']))
+echo "hi" ." ". $_COOKIE["name"]. "<br/>";
+else
+echo " not recognized";
+
+setcookie('name','osama');
+
+echo"<pre>";
+var_dump($_COOKIE);
+echo"</pre>";
+
+setcookie('gender','osama',time()-1);
+
 
 ?>
-
-
-
