@@ -15,8 +15,9 @@ if (isset($_SESSION['page_count'])) {
 } else {
     $_SESSION['page_count'] = 1;
 
-$_SESSION['count'] = 1 ;
+
 }
+$_SESSION['country'] = 'Egypt';
 
 echo "you visited my web site " . $_SESSION['page_count']." times" . "<br>" ;
 
@@ -26,7 +27,7 @@ if ($_SESSION['page_count'] >10 ){
 
 }
 
-$_SESSION['country'] = 'Egypt';
+;
 unset($_SESSION['country']);
 
 setcookie('PHPESSID','m9brah4915t36afginjr7ftoit',time()-1);
