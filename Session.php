@@ -30,7 +30,9 @@ if ($_SESSION['page_count'] >10 ){
 ;
 unset($_SESSION['country']);
 
-setcookie('PHPESSID','m9brah4915t36afginjr7ftoit',time()-1);
+setcookie('PHPESSID','',time()-1);
+session_regenerate_id() ;
+
 
 echo"<pre>";
 var_dump($_SESSION);
